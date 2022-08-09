@@ -5,14 +5,26 @@ url = "https://app.semarnat.gob.mx/ws-mobiliario/mobiliario"
 
 payload = ""
 headers = {
-  'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzZW1hcm5hdEpXVCIsInN1YiI6IlVzdWFyaW97c2VnVXN1YXJpb3NJZDoyLHNlZ1VzdWFyaW9zTm9tYnJlVXN1YXJpbzogJ21vYmlsaWFyaW9fZGdpdCcsc2VnVXN1YXJpb3NQYXNzd29yZDogJyQyYSQxMCRXUW83bkhOcXlKaFFncXJBbklIWnB1NnlQU29yYVFyajdrUU45SzJrcGRwbGEuOTl0WXJRMid9IiwiYXV0aG9yaXRpZXMiOlsibW9iaWxpYXJpbyJdLCJpYXQiOjE2NjAwMDA2NTUsImV4cCI6MTY2MDAwMjQ1NX0.ooWBfG6y-lQ3g_CwML5pwHrdU3Tyz4W0F-hRO3xd5fd_vnF3kyvqLFToDqpluB9KYNCQhmA3tIcvPw0aPdc-ew',
-  'Cookie': 'JSESSIONID="j5jMTHZ3R8Ekdae-ohXm-ji7Bg3ANYtcdPoS13MT.master-10.150.13.36:server-three"'
+  'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzZW1hcm5hdEpXVCIsInN1YiI6IlVzdWFyaW97c2VnVXN1YXJpb3NJZDoyLHNlZ1VzdWFyaW9zTm9tYnJlVXN1YXJpbzogJ21vYmlsaWFyaW9fZGdpdCcsc2VnVXN1YXJpb3NQYXNzd29yZDogJyQyYSQxMCRXUW83bkhOcXlKaFFncXJBbklIWnB1NnlQU29yYVFyajdrUU45SzJrcGRwbGEuOTl0WXJRMid9IiwiYXV0aG9yaXRpZXMiOlsibW9iaWxpYXJpbyJdLCJpYXQiOjE2NjAwODExOTMsImV4cCI6MTY2MDA4Mjk5M30.bNxcVvj15PFbZWgzJJnDjkRpRe6YDAvn9b-CVHinyg-bJS75lIUj7C3_w4-NFN6OsV4SmK6kSIAFZTon8VVzog',
+  'Cookie': 'JSESSIONID="CThmwvA1-YoVZ596RvyIMjJXRJCaVqolbQ9TBET3.master-10.150.13.36:server-three"'
 }
 
 response = requests.request("GET", url, headers=headers, data=payload, verify=False)
 
-response=response.json()
-print(response)
+
+if response.status_code == 200:
+     response = response.json()
+    # print(response)
+     for e in response['Consulta']: 
+        print(e['resguardante'])
+        print(e['descripcionCabms'])
+        print(e['descripcion'])
+        print("")
+
+     lista=json.loads(response)
+
+     print(type(lista))
+
 
 # response_dict=json.loads(response)
 # print(type(response_dict))
